@@ -1,0 +1,2 @@
+class EncoderFactory
+end
