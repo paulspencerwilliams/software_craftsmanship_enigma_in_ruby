@@ -4,8 +4,13 @@ require './lib/encoder_factory.rb'
 
 class EnigmaMachine 
   attr_accessor :encoder
-  def initialize (rotors, rotorStartingPositions, rotorFactory = RotorFactory.new, encoderFactory = EncoderFactory.new)
-    rotors = rotorFactory.createRotors(rotors)
+  def initialize (rotorSpecs, rotorStartingPositions, rotorFactory = RotorFactory.new, encoderFactory = EncoderFactory.new)
+    rotors = rotorFactory.createRotors(rotorSpecs)
+    
+    for i in 0 .. rotors.length - 1 do
+        rotors[i].setPosition(rotorStartingPositions[i])
+    end
+    
     @encoder = encoderFactory.create(rotors)
   end
 end

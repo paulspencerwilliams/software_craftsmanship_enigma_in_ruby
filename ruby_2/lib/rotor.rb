@@ -3,5 +3,8 @@ class Rotor
 
   def initialize (name)
     @name = name
+    
+    def setPosition ( position )
+    end
   end
 end
