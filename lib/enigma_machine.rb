@@ -16,7 +16,7 @@ class EnigmaMachine
     encoder = @encoderFactory.create
     output = ""
     input.split("").each do |i|
-      output << encoder.convert(i)
+      output << encoder.convert(i, rotors)
     end
     output
   end

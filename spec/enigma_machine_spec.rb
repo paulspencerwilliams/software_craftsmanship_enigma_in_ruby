@@ -43,9 +43,9 @@ describe EnigmaMachine do
       encoder = double("encoder")
       
       encoderFactory.stub(:create).and_return(encoder)
-      encoder.stub(:convert).with("A").and_return("D")
-      encoder.stub(:convert).with("B").and_return("E")
-      encoder.stub(:convert).with("C").and_return("F")
+      encoder.stub(:convert).with("A", @rotors).and_return("D")
+      encoder.stub(:convert).with("B", @rotors).and_return("E")
+      encoder.stub(:convert).with("C", @rotors).and_return("F")
       
       enigmaMachine = EnigmaMachine.new ["I","II","III"], ["M","C","K"], @rotorFactory, encoderFactory
       enigmaMachine.type("ABC").should eq("DEF")
