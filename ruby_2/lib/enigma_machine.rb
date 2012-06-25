@@ -13,4 +13,12 @@ class EnigmaMachine
     
     @encoder = encoderFactory.create(rotors)
   end
+  
+  def type(input)
+    result = ""
+    input.split("").each do |i|
+      result << @encoder.convert(i)
+    end
+    result
+  end
 end

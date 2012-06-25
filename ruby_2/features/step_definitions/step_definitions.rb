@@ -9,10 +9,10 @@ Given /^I have loaded an Enigma machine with the following rotors$/ do |table|
   @enigmaMachine = EnigmaMachine.new rotors, rotorStartPositions
 end
 
-When /^I type "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I type "(.*?)"$/ do |input|
+  @actual = @enigmaMachine.type(input)
 end
 
-Then /^I should see "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see "(.*?)"$/ do |expected|
+  @actual.should eq(expected)
 end

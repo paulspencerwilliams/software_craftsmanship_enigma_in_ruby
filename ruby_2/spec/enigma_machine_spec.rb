@@ -38,4 +38,23 @@ describe EnigmaMachine do
     end
   end
   
+  context "typing words in" do
+    it "should convert words using the encoder" do
+      dummyRotorFactory = double("dummyRotorFactory")
+      dummyEncoderFactory  = double("dummyEncoderFactory")
+      dummyEncoder = double("dummyEncoder")
+      
+      dummyRotorFactory.stub(:createRotors).and_return([])
+      dummyEncoderFactory.stub(:create).and_return(dummyEncoder)
+      dummyEncoder.stub(:convert).with("A").and_return("D")
+      dummyEncoder.stub(:convert).with("B").and_return("E")
+      dummyEncoder.stub(:convert).with("C").and_return("F")
+      
+      enigmaMachine = EnigmaMachine.new [],[], dummyRotorFactory, dummyEncoderFactory
+      
+      result = enigmaMachine.type("ABC")
+      
+      result.should eq("DEF")
+    end
+  end
 end
