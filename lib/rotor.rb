@@ -1,10 +1,12 @@
 class Rotor
-  attr_accessor :name
+  attr_accessor :name, :left
 
-  def initialize (name)
+  def initialize (name, left)
     @name = name
-    
-    def setPosition ( position )
-    end
+    @left = left
+  end
+  
+  def setPosition ( position )
+    @position = position
   end
 end
