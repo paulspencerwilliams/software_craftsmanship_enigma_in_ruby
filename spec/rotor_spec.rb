@@ -16,6 +16,19 @@ describe Rotor do
     it "should convert U to A" do
       rotor.convert("U").should eq("A")
     end
+    
+    it "should reverse E to W" do
+      rotor.reverse("E").should eq("W")
+    end
+    
+    it "should reverse B to K" do
+      rotor.reverse("B").should eq("K")
+    end
+    
+    it "should reverse U to R" do
+      rotor.reverse("U").should eq("R")
+    end    
+    
   
   end
   
@@ -24,9 +37,15 @@ describe Rotor do
     rotor = Rotor.new "II"
     rotor.setPosition("C")
     
-    it "should convert T to Y" do
+    it "should convert T to W" do
       rotor.convert("T").should eq("W")
     end
+
+    it "should reverse T to V" do
+      rotor.reverse("T").should eq("V")
+    end
+
+
   end  
 
   context "when rotor I is set to M" do
@@ -35,6 +54,10 @@ describe Rotor do
     
     it "should convert W to J" do
       rotor.convert("W").should eq("J")
+    end
+    
+    it "should reverse W to J" do
+      rotor.reverse("W").should eq("J")
     end
   end  
 
