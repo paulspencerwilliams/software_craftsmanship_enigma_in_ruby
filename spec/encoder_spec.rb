@@ -2,28 +2,39 @@ require './lib/encoder.rb'
 
 describe Encoder do
   describe "when asked to convert a letter" do
-    it "should pass letter through rotors, reflector and back again" do
+    before (:each) do
       rotorI = double("rotorI")
       rotorII = double("rotorII")
-      rotorIII = double("rotorIII")
-      rotors = [rotorI, rotorII, rotorIII]
+      @rotorIII = double("rotorIII")
+      @rotors = [rotorI, rotorII, @rotorIII]
       
-      reflector = double("reflector")
+      @reflector = double("reflector")
       
-      rotorIII.stub(:convert).with("A").and_return("B")
       rotorII.stub(:convert).with("B").and_return("C")
-      rotorI.stub(:convert).with("C").and_return("D")
+      rotorI.stub(:convert).with("C").and_return("D")      
       
-      reflector.stub(:reflect).with("D").and_return("E")
+      @reflector.stub(:reflect).with("D").and_return("E")
       
       rotorI.stub(:reverse).with("E").and_return("F")
       rotorII.stub(:reverse).with("F").and_return("G")
-      rotorIII.stub(:reverse).with("G").and_return("H")
+      @rotorIII.stub(:reverse).with("G").and_return("H")  
       
-      encoder = Encoder.new reflector
+      @encoder = Encoder.new @reflector
       
-      encoder.convert("A", rotors).should eq("H")
+    end
+    
+    it "should first shift rightmost rotor before converting through it" do
+      @rotorIII.should_receive(:shift).ordered
+      @rotorIII.should_receive(:convert).with("A").ordered.and_return("B")
       
+      @encoder.convert("A", @rotors)
+    end
+    
+    
+    it "should pass letter through rotors, reflector and back again" do
+      @rotorIII.stub(:shift)
+      @rotorIII.stub(:convert).with("A").and_return("B")
+      @encoder.convert("A", @rotors).should eq("H")
     end
   end
 end
