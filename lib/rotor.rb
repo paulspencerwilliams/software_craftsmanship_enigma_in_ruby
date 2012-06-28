@@ -13,16 +13,18 @@ class Rotor
   end
   
   def convert (letter)
-    inputIndex = alphabet[letter]
-    shiftedIndex = (inputIndex + alphabet[@position]) %26
-    convertedIndex = convertMappings[@name][shiftedIndex]
-    alphabet[((26 - alphabet[@position]) + convertedIndex) %26] 
+    runThroughRotors letter, convertMappings
+    
   end
   
   def reverse (letter)
+    runThroughRotors letter, reverseMappings
+  end
+  
+  def runThroughRotors(letter, mappings)
     inputIndex = alphabet[letter]
     shiftedIndex = (inputIndex + alphabet[@position]) %26
-    convertedIndex = reverseMappings[@name][shiftedIndex]
+    convertedIndex = mappings[@name][shiftedIndex]
     alphabet[((26 - alphabet[@position]) + convertedIndex) %26]
   end
   
