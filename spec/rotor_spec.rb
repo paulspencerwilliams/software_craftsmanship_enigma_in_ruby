@@ -3,33 +3,63 @@ require './lib/rotor.rb'
 describe Rotor do
   
   context "when rotor III is set to L" do
-    rotor = Rotor.new "III"
-    rotor.setPosition("L")
+    before (:each) do
+      @rotor = Rotor.new "III"
+      @rotor.setPosition("L")      
+    end
+
+    
     it "should convert E to T" do
-      rotor.convert("E").should eq("T")
+      @rotor.convert("E").should eq("T")
     end
     
     it "should convert B to O" do
-      rotor.convert("B").should eq("O")
+      @rotor.convert("B").should eq("O")
     end
     
     it "should convert U to A" do
-      rotor.convert("U").should eq("A")
+      @rotor.convert("U").should eq("A")
     end
     
     it "should reverse E to W" do
-      rotor.reverse("E").should eq("W")
+      @rotor.reverse("E").should eq("W")
     end
     
     it "should reverse B to K" do
-      rotor.reverse("B").should eq("K")
+      @rotor.reverse("B").should eq("K")
     end
     
     it "should reverse U to R" do
-      rotor.reverse("U").should eq("R")
-    end    
+      @rotor.reverse("U").should eq("R")
+    end
     
+    it "should increment position to M if shifted" do
+      @rotor.shift()
+      @rotor.position.should eq("M")
+    end
+    
+
+  end
   
+  context "when rotor III is set to Z" do
+    before (:each) do
+      @rotor = Rotor.new "III"
+      @rotor.setPosition("Z") 
+      @leftRotor = double("leftRotor")
+      @rotor.left = @leftRotor
+    end
+    
+    
+    it "should set position to A" do
+      @leftRotor.stub(:shift)
+      @rotor.shift()
+      @rotor.position.should eq("A")
+    end
+    
+    it "should shift left rotor" do
+      @leftRotor.should_receive(:shift)
+      @rotor.shift()
+    end
   end
   
   
@@ -51,6 +81,7 @@ describe Rotor do
   context "when rotor I is set to M" do
     rotor = Rotor.new "I"
     rotor.setPosition("M")
+    
     
     it "should convert W to J" do
       rotor.convert("W").should eq("J")

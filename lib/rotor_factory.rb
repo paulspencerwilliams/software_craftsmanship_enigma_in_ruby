@@ -3,8 +3,12 @@ require './lib/rotor.rb'
 class RotorFactory
   def createRotors (rotorsToCreate)
     rotors = []
+    leftRotor = nil;
     for i in 0..rotorsToCreate.length - 1 do
-      rotors << Rotor.new( rotorsToCreate[i])
+      newRotor = Rotor.new( rotorsToCreate[i], leftRotor)
+      rotors << newRotor
+      leftRotor = newRotor
+      
     end
     rotors
   end
