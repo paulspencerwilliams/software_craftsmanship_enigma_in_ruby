@@ -21,12 +21,8 @@ class Rotor
   
   def reverse (letter)
     inputIndex = alphabet[letter]
-    puts(inputIndex)
     shiftedIndex = (inputIndex + alphabet[@position]) %26
-    puts(shiftedIndex)
     convertedIndex = reverseMappings[@name][shiftedIndex]
-    puts(convertedIndex)
-    puts(((26 - alphabet[@position]) + convertedIndex) %26)
     alphabet[((26 - alphabet[@position]) + convertedIndex) %26]
   end
   

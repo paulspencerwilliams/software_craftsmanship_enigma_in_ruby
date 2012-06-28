@@ -25,8 +25,6 @@ describe Reflector do
       "A".upto("Z").each do |letter|
         firstReflection = reflector.reflect(letter)
         secondReflection = reflector.reflect(firstReflection)
-        puts ("#{letter} reflects to #{firstReflection} reflects back to #{secondReflection}")
-
         secondReflection.should eq(letter)
         
       end
