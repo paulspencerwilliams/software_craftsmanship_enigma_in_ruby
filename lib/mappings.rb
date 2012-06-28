@@ -260,4 +260,8 @@ module Mappings
                                               }                        
                   }
                 end                
+                
+    def notches
+      { "I" => "Q", "II" => "E", "III" => "V"}
+    end
 end

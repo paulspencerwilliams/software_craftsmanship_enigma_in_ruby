@@ -45,17 +45,25 @@ describe Rotor do
     before (:each) do
       @rotor = Rotor.new "III"
       @rotor.setPosition("Z") 
-      @leftRotor = double("leftRotor")
-      @rotor.left = @leftRotor
     end
     
     
     it "should set position to A" do
-      @leftRotor.stub(:shift)
       @rotor.shift()
       @rotor.position.should eq("A")
     end
     
+
+  end
+  
+  context "when rotor III is set to V" do
+    before (:each) do
+      @rotor = Rotor.new "III"
+      @rotor.setPosition("V") 
+      @leftRotor = double("leftRotor")
+      @rotor.left = @leftRotor
+    end
+        
     it "should shift left rotor" do
       @leftRotor.should_receive(:shift)
       @rotor.shift()
@@ -77,6 +85,21 @@ describe Rotor do
 
 
   end  
+  
+  
+  context "when rotor II is set to E" do
+    before (:each) do
+      @rotor = Rotor.new "II"
+      @rotor.setPosition("E") 
+      @leftRotor = double("leftRotor")
+      @rotor.left = @leftRotor
+    end
+        
+    it "should shift left rotor" do
+      @leftRotor.should_receive(:shift)
+      @rotor.shift()
+    end
+  end  
 
   context "when rotor I is set to M" do
     rotor = Rotor.new "I"
@@ -91,6 +114,20 @@ describe Rotor do
       rotor.reverse("W").should eq("J")
     end
   end  
+  
+  context "when rotor I is set to Q" do
+    before (:each) do
+      @rotor = Rotor.new "I"
+      @rotor.setPosition("Q") 
+      @leftRotor = double("leftRotor")
+      @rotor.left = @leftRotor
+    end
+        
+    it "should shift left rotor" do
+      @leftRotor.should_receive(:shift)
+      @rotor.shift()
+    end
+  end
 
 
   
