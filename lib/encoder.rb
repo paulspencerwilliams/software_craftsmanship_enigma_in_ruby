@@ -5,6 +5,7 @@ class Encoder
     @reflector = reflector
   end
   def convert(letter, rotors) 
+    puts (letter)
     conversion = letter
     rotors.last.shift()    
     rotors.reverse_each do | rotor |
@@ -16,6 +17,8 @@ class Encoder
     rotors.each do | rotor |
       conversion = rotor.reverse(conversion)
     end
+
+    puts (conversion)
     conversion
   end
 end

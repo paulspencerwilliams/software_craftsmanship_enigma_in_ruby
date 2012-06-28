@@ -25,6 +25,8 @@ class Rotor
     inputIndex = alphabet[letter]
     shiftedIndex = (inputIndex + alphabet[@position]) %26
     convertedIndex = mappings[@name][shiftedIndex]
+    puts "#{letter} -> #{alphabet[((26 - alphabet[@position]) + convertedIndex) %26]}"
+
     alphabet[((26 - alphabet[@position]) + convertedIndex) %26]
   end
   
