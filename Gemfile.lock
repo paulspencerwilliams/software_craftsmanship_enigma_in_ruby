@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ZenTest (4.8.1)
     builder (3.0.0)
     cucumber (1.2.1)
       builder (>= 2.1.2)
@@ -25,7 +24,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest
   cucumber
   rspec
   rspec-mocks
