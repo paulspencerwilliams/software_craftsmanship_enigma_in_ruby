@@ -22,6 +22,8 @@ GEM
     guard-cucumber (1.4.0)
       cucumber (>= 1.2.0)
       guard (>= 1.1.0)
+    guard-rspec (1.2.1)
+      guard (>= 1.1)
     json (1.7.3)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
@@ -55,5 +57,6 @@ PLATFORMS
 DEPENDENCIES
   cucumber
   guard-cucumber
+  guard-rspec
   rspec
   rspec-mocks
